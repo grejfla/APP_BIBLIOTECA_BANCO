@@ -1,11 +1,13 @@
 CREATE TABLE `funcionario`(
 `idfuncionario` int not null auto_increment,
 `NomeFuncionario` varchar (50) not null,
-`SenhaFuncionario` int not null,
-`RegistroFuncionario` int not null,
-`CPF_Funcionario`int not null,
+`SenhaFuncionario` varchar (15) not null,
+`RegistroFuncionario` varchar (10) not null,
+`CPF_Funcionario` varchar (15) not null,
 primary key (`idfuncionario`)
 );
+
+drop table `funcionario`;
 
 CREATE TABLE `aluno`(
 `idAluno` int not null auto_increment,
@@ -21,16 +23,42 @@ CREATE TABLE `livros`(
 `NomeLivro` varchar (100) not null,
 `AutorLivro` varchar (100) not null,
 `EditoraLivro` varchar (75) not null,
-`Ano_Edicao_livro` int  not null,
+`Ano_Edicao_Livro` varchar (60) not null,
 `Categoria_Livro` varchar (100) not null,
-`QuantidadeLivro` int not null,
+`QuantidadeLivro` varchar (15) not null,
 `StatusLivros` varchar (30) not null,
 primary key (`idLivro`)
 );
 
+drop table `livros`;
+
 CREATE TABLE `emprestimos`(
-`idemprestimo` int not null auto_increment,
+`idEmprestimo` int not null auto_increment,
 `DataEmprestimo` date  not null,
 `PrevisaoDevolucao` date not null,
 primary key (`idemprestimo`)
 );
+
+select * from `tabelaaluno`;
+
+INSERT INTO `funcionario` (`NomeFuncionario`, `SenhaFuncionario`, `RegistroFuncionario`, `CPF_Funcionario`) 
+VALUES ('Diego', '1020', '01', '12456878942' ),('Robert', '1120', '02', '17845698478'), ('Pedro', '1220', '03', '12348975624'),
+('Maria', '1320', '04', '32564712547');
+
+select * from `funcionario`;
+
+INSERT INTO `aluno` (`NomeAluno`,`SenhaAluno`,`MatriculaAluno`, `EnderecoAluno`) VALUES ('Miguel', '1450', '1320', 'Rua da Saudade, nº. 10, Bairro Eldorado, Contagem/MG'),
+ ('Ana', '1030', '1420', 'Rua da Consolação, nº. 25, Bairro Clemente Faria, Betim/MG'), 
+ ('Douglas', '1740', '1510','Rua Mossoro, nº. 14, Vargem Grande, Ibirité/MG'),
+ ('Felipe', '1620', '1780', 'RuaInglaterra, nº. 520, Santa Cruz, Contagem/MG');
+ 
+ select * from `aluno`;
+ INSERT INTO `livros` (`NomeLivro`, `AutorLivro`, `EditoraLivro`, `Ano_Edicao_Livro`, `Categoria_Livro`, `QuantidadeLivro`, `StatusLivros`) VALUES ('O Cérebro que se transforma', 'Norman Doidge', 'Editora Record', '12 dezembro 2011- 27ªEdição', 'cientifico','5', 'todos disponivéis'),
+ ('O Alguimista', 'Paulo Coelho', 'Editora Paralela', '5 de abril de 2017 - 1ª Edição', 'Auto ajuda', '10', 'todos disponivéis'), ('O QUE RESTA DE NÓS', 'Virgine Grimaldi', 'Editora Gutenberg', '15 de agosto de 2024', 'ficção', '6', 'todos disponivéis'), ('O HOMEM MAIS INTELIGENTE DA HISTORIA', 'Augusto Cury', 'Editora Sextante', '06 de outubro de 2016 - 1ª Edição', 'Auto ajuda','3', 'todos disponivéis');
+ 
+select * from `livros`;
+drop table`livros`;
+
+INSERT INTO `emprestimos` (`DataEmprestimo`, `PrevisaoDevolucao`) VALUES ('2025-05-10', '2025-05-25'), ('2026-02-04', '2026-02-19'), ('2024-09-02', '2024-09-17'), ('2025-11-03', '2025-11-18');
+
+select * from `emprestimos`;
